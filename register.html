@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlamourApp Registration | Create Your Account &amp; Start Earning €12/Hour</title>
+  <meta name="description" content="Official Glamour NG registration. Create your Glamour account in 2 minutes, earn €12/hour across 7 GlamGains channels, and claim your ₦12,000 instant cashback.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #FFC919;
+      --gold-dark: #D9A600;
+      --gold-grad: linear-gradient(145deg, #FFC919, #e6b800);
+      --bg: #000000;
+      --bg2: #0A0702;
+      --bg3: #0d0d0d;
+      --card1: #251A08;
+      --card2: #703D18;
+      --card3: #D9A600;
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.6);
+      --radius: 20px;
+      --radius-lg: 28px;
+    }
+
+    html, body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ═══════════════════════════════
+       REGISTRATION FORM
+    ═══════════════════════════════ */
+    #pageForm {
+      display: block;
+      min-height: 100vh;
+      background: var(--bg);
+      padding: 32px 20px 40px;
+    }
+
+    .form-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .form-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: left;
+    }
+
+    .form-sub {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .form-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 18px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg3);
+      border: 1px solid rgba(255,201,25,0.2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      transition: border-color 0.2s;
+    }
+
+    .input-wrap:focus-within {
+      border-color: rgba(255,201,25,0.5);
+    }
+
+    .input-wrap svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold);
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+
+    .input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .input-wrap input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .form-btn {
+      width: 100%;
+      margin-top: 30px;
+      background: var(--gold-grad);
+      border: none;
+      padding: 17px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      color: #111;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .form-btn:hover { opacity: 0.92; }
+    .form-btn:active { transform: scale(0.98); }
+    .form-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════
+       DASHBOARD
+    ═══════════════════════════════ */
+    #pageDashboard {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg2);
+      overflow-y: auto;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      padding: 70px 18px 30px;
+      z-index: 9999;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .dash-menu {
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--text);
+    }
+
+    /* LIVE POPUP (inside dashboard) */
+    #livePopupWrap {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .live-popup {
+      background: linear-gradient(145deg, #6F442C, #251A08);
+      width: 92%;
+      max-width: 500px;
+      padding: 12px 14px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      transform: translateY(-120%);
+      opacity: 0;
+    }
+
+    .live-popup.show {
+      animation: slideDown 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    .live-popup.hide {
+      animation: slideUp 0.4s ease forwards;
+    }
+
+    @keyframes slideDown {
+      0%   { transform: translateY(-120%); opacity: 0; }
+      70%  { transform: translateY(8px);   opacity: 1; }
+      100% { transform: translateY(0);     opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      0%   { transform: translateY(0);    opacity: 1; }
+      100% { transform: translateY(-120%); opacity: 0; }
+    }
+
+    .live-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #111;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .live-text { flex: 1; text-align: left; }
+    .live-name { font-size: 14px; font-weight: 600; }
+    .live-msg  { font-size: 13px; opacity: 0.8; }
+    .live-time { font-size: 12px; opacity: 0.6; white-space: nowrap; }
+
+    /* PROFILE CARD */
+    .profile {
+      background: var(--gold);
+      color: #111;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .profile-left { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+    .profile-name { font-weight: 700; font-size: 16px; }
+    .profile-tag  { font-size: 12px; opacity: 0.65; }
+
+    .profile-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .currency-btn {
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #111;
+      background: rgba(0,0,0,0.1);
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* CURRENCY DROPDOWN */
+    #currencyBox {
+      display: none;
+      position: absolute;
+      right: 16px;
+      top: 90px;
+      background: #111;
+      border: 1px solid rgba(255,201,25,0.2);
+      border-radius: 14px;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    #currencyBox div {
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.15s;
+    }
+
+    #currencyBox div:hover { background: rgba(255,201,25,0.1); }
+
+    /* STACKED CARDS */
+    .stack {
+      position: relative;
+      height: 230px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .dash-card {
+      position: absolute;
+      width: 100%;
+      border-radius: 24px;
+      padding: 22px;
+      height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: top 0.35s ease, z-index 0s;
+    }
+
+    .dash-card h3 {
+      font-size: 12px;
+      opacity: 0.7;
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+
+    .dash-card h1 {
+      font-size: 34px;
+      font-weight: 600;
+      text-align: left;
+      line-height: 1.1;
+    }
+
+    .card1 { background: var(--card1); z-index: 3; top: 0; }
+    .card2 { background: var(--card2); z-index: 2; top: 10px; }
+    .card3 { background: var(--card3); color: #111; z-index: 1; top: 20px; }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-row button {
+      flex: 1 1 calc(50% - 4px);
+      padding: 11px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      background: var(--gold);
+      color: #111;
+      transition: opacity 0.2s;
+    }
+
+    .btn-row button.btn-full {
+      flex: 1 1 100%;
+    }
+
+    .btn-row button:hover { opacity: 0.85; }
+
+    /* MUSIC PLAYER */
+    .music-card {
+      background: var(--card1);
+      border-radius: 24px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .music-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+
+    .spotify-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .music-body {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .music-cover {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .music-info { flex: 1; }
+
+    .track-title  { font-size: 17px; font-weight: 600; text-align: left; }
+    .track-artist { font-size: 13px; opacity: 0.6; margin-bottom: 10px; text-align: left; }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 5px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      border-radius: 10px;
+      transition: width 0.5s linear;
+    }
+
+    .play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+
+    .play-btn:hover { background: rgba(255,201,25,0.15); }
+
+    /* REFERRAL BOX */
+    .ref-box {
+      background: linear-gradient(145deg, #141008, #1c1408);
+      border-radius: 26px;
+      padding: 18px;
+      margin-top: 22px;
+      border: 1px solid rgba(255,201,25,0.08);
+    }
+
+    .ref-title {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .ref-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ref-link {
+      flex: 1;
+      background: rgba(0,0,0,0.6);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+
+    .ref-copy {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(255,201,25,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+    }
+
+    .ref-copy:active { transform: scale(0.9); background: rgba(255,201,25,0.2); }
+
+    /* ═══════════════════════════════
+       ACTIVATION POPUP OVERLAY
+    ═══════════════════════════════ */
+    #activationPopup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+    }
+
+    #activationPopup.open {
+      display: flex;
+    }
+
+    .popup-box {
+      width: 90%;
+      max-width: 420px;
+      background: linear-gradient(145deg, #1c1408, #0f0b05);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--text);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      animation: popIn 0.25s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .popup-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,201,25,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .popup-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .popup-text {
+      font-size: 14px;
+      opacity: 0.7;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .popup-box { position: relative; }
+
+    .popup-btn {
+      display: block;
+      width: 100%;
+      padding: 17px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      background: var(--gold-grad);
+      color: #111;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .popup-btn:hover  { opacity: 0.9; }
+    .popup-btn:active { transform: scale(0.98); }
+
+
+
+    /* ═══════════════════════════════
+       VALIDATION MESSAGE
+    ═══════════════════════════════ */
+    .form-error {
+      display: none;
+      color: #ff6b6b;
+      font-size: 12px;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: rgba(255,107,107,0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(255,107,107,0.2);
+    }
+
+    .form-error.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════
+       REGISTRATION FORM
+  ═══════════════════════ -->
+  <div id="pageForm">
+    <img src="https://i.postimg.cc/XvZp3jbT/20260408-184859.png" class="form-logo" alt="Glamour">
+
+    <div class="form-title">Sign Up</div>
+    <div class="form-sub">Create your professional Glamour account.</div>
+
+    <div class="form-label">Full Name</div>
+    <div class="input-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+      <input type="text" id="nameInput" placeholder="John Doe" autocomplete="name">
+    </div>
+
+    <div class="form-label">Username</div>
+    <div class="input-wrap">
+      <svg viewBox="0 0 24 24"><path d="M15 14c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm-6 0c2.7 0 5-2.3 5-5S11.7 4 9 4 4 6.3 4 9s2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h12v-3c0-1.2.5-2.3 1.3-3.2C11.5 16.5 10.3 16 9 16zm6 0c-.8 0-1.5.1-2.2.3 1.9 1 3.2 2.5 3.2 4.7v3h8v-3c0-3.3-6.7-5-9-5z"/></svg>
+      <input type="text" id="userInput" placeholder="@glamour_pro" autocomplete="username">
+    </div>
+
+    <div class="form-label">Email Address</div>
+    <div class="input-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 13L2 6.76V18h20V6.76L12 13zm0-2L22 4H2l10 7z"/></svg>
+      <input type="email" id="emailInput" placeholder="name@example.com" autocomplete="email">
+    </div>
+
+    <div class="form-label">Password</div>
+    <div class="input-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 17a2 2 0 002-2 2 2 0 00-4 0 2 2 0 002 2zm6-6h-1V9a5 5 0 00-10 0v2H6a2 2 0 00-2 2v7h16v-7a2 2 0 00-2-2zm-3 0H9V9a3 3 0 016 0v2z"/></svg>
+      <input type="password" id="passInput" placeholder="••••••••" autocomplete="new-password">
+    </div>
+
+    <div class="form-error" id="formError">Please fill all fields correctly.</div>
+
+    <button class="form-btn" id="formBtn" onclick="handleRegister()">Complete Registration →</button>
+
+    <div class="form-footer">
+      By creating your account, you agree to our Terms &amp; Privacy Policy
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════
+       DASHBOARD
+  ═══════════════════════ -->
+  <div id="pageDashboard">
+
+    <!-- LIVE POPUP BANNER -->
+    <div id="livePopupWrap">
+      <div id="livePopup" class="live-popup">
+        <div class="live-avatar" id="liveAvatar">N</div>
+        <div class="live-text">
+          <div class="live-name" id="liveName">Ngozi E.</div>
+          <div class="live-msg"  id="liveMsg">Activated Lifetime Access 💎</div>
+        </div>
+        <div class="live-time">Just now</div>
+      </div>
+    </div>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="dash-menu" onclick="openActivation()">☰ Glamour</div>
+      <div class="dash-menu" onclick="openActivation()">☰</div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="profile">
+      <div class="profile-left">
+        <div class="profile-name" id="welcomeName">Welcome</div>
+        <div class="profile-tag">Dashboard</div>
+      </div>
+      <div class="profile-right">
+        <div class="profile-avatar" id="avatarInitial">G</div>
+        <div>
+          <div style="font-size:12px; color:#111; opacity:0.65;">Premium</div>
+          <button class="currency-btn" onclick="toggleCurrency()">USD ▼</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENCY DROPDOWN -->
+    <div id="currencyBox">
+      <div onclick="setCurrency('USD')">USD – Dollar</div>
+      <div onclick="setCurrency('NGN')">NGN – Naira</div>
+      <div onclick="setCurrency('EUR')">EUR – Euro</div>
+    </div>
+
+    <!-- STACKED CARDS -->
+    <div class="stack" onclick="nextCard()">
+      <div class="dash-card card1" id="card0">
+        <h3>TOTAL INCOME</h3>
+        <h1 id="balance1">$12</h1>
+        <div class="btn-row">
+          <button onclick="event.stopPropagation(); openActivation()">Activate</button>
+          <button onclick="event.stopPropagation(); openActivation()">Withdraw</button>
+          <button class="btn-full" onclick="event.stopPropagation(); location.href='refund.html'">Refund</button>
+        </div>
+      </div>
+      <div class="dash-card card2" id="card1">
+        <h3>EUROPEAN PARTNERSHIP</h3>
+        <h1 id="balance2">$12</h1>
+        <div class="btn-row">
+          <button onclick="event.stopPropagation(); openActivation()">Activate</button>
+          <button onclick="event.stopPropagation(); openActivation()">Withdraw</button>
+          <button class="btn-full" onclick="event.stopPropagation(); location.href='refund.html'">Refund</button>
+        </div>
+      </div>
+      <div class="dash-card card3" id="card2">
+        <h3>LIFESTYLE REWARD</h3>
+        <h1 id="balance3">$5</h1>
+        <div class="btn-row">
+          <button onclick="event.stopPropagation(); openActivation()">Activate</button>
+          <button onclick="event.stopPropagation(); openActivation()">Withdraw</button>
+          <button class="btn-full" onclick="event.stopPropagation(); location.href='refund.html'">Refund</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUSIC PLAYER -->
+    <div class="music-card">
+      <div class="music-top">
+        <div class="spotify-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 17.34c-.2.33-.63.44-.96.24-2.63-1.61-5.94-1.98-9.83-1.11-.38.09-.75-.15-.84-.53-.09-.38.15-.75.53-.84 4.23-.95 7.87-.52 10.86 1.27.33.2.44.63.24.97zm1.37-3.05c-.25.4-.77.53-1.17.28-3.01-1.84-7.6-2.37-11.16-1.28-.45.14-.93-.12-1.07-.57-.14-.45.12-.93.57-1.07 4.07-1.25 9.13-.64 12.54 1.44.4.25.53.77.29 1.2zm.12-3.18C15.2 8.7 9.47 8.42 6.03 9.42c-.52.15-1.06-.15-1.21-.67-.15-.52.15-1.06.67-1.21 3.96-1.16 10.34-.84 14.56 1.52.47.26.64.86.38 1.33-.26.47-.86.64-1.33.38z"/>
+          </svg>
+          <span>Spotify</span>
+        </div>
+        <div>PLAY TO LISTEN</div>
+      </div>
+      <div class="music-body">
+        <img src="https://i.postimg.cc/XvZp3jbT/20260408-184859.png" class="music-cover" id="coverImg" alt="Cover">
+        <div class="music-info">
+          <div class="track-title">Purple Speedy</div>
+          <div class="track-artist">Glamour Explained</div>
+          <div class="progress-row">
+            <span id="currentTime">0:00</span>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+        <div class="play-btn" onclick="togglePlay()" id="playBtn">▶</div>
+      </div>
+      <audio id="audioPlayer" src="https://files.catbox.moe/wi1xcb.mp3"></audio>
+    </div>
+
+    <!-- REFERRAL BOX -->
+    <div class="ref-box">
+      <div class="ref-title">Your Private Network Link</div>
+      <div class="ref-inner">
+        <div class="ref-link" id="refLink">https://glamourlux.net.ng/?ref=user</div>
+        <button class="ref-copy" onclick="copyRef()" title="Copy link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFC919">
+            <path d="M16 1H4a2 2 0 00-2 2v12h2V3h12V1zm4 4H8a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h12v14z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /pageDashboard -->
+
+
+  <!-- ═══════════════════════
+       ACTIVATION POPUP
+  ═══════════════════════ -->
+  <div id="activationPopup" onclick="closeActivation(event)">
+    <div class="popup-box">
+      <button class="popup-close" onclick="closeActivationBtn()">×</button>
+      <div class="popup-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="#FFC919">
+          <path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9h16v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 8V6a3 3 0 016 0v3H9z"/>
+        </svg>
+      </div>
+      <div class="popup-title">Activate Account</div>
+      <div class="popup-text">
+        You currently have a €7.64 balance. To withdraw funds and access all premium features, please complete your one-time activation.
+      </div>
+      <!-- ✅ INTERNAL LINK — points to payment.html -->
+      <a href="https://paystack.shop/pay/glamouractivation" class="popup-btn">Activate Now — ₦14,000</a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════
+       SCRIPTS
+  ═══════════════════════ -->
+  <script>
+    /* ── REGISTRATION ── */
+    function handleRegister() {
+      var name     = document.getElementById('nameInput').value.trim();
+      var username = document.getElementById('userInput').value.trim();
+      var email    = document.getElementById('emailInput').value.trim();
+      var password = document.getElementById('passInput').value;
+      var errEl    = document.getElementById('formError');
+      var btn      = document.getElementById('formBtn');
+
+      // Basic validation
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!name || !username || !email || !password) {
+        errEl.textContent = 'Please fill in all fields.';
+        errEl.classList.add('show');
+        return;
+      }
+      if (!emailOk) {
+        errEl.textContent = 'Please enter a valid email address.';
+        errEl.classList.add('show');
+        return;
+      }
+      if (password.length < 6) {
+        errEl.textContent = 'Password must be at least 6 characters.';
+        errEl.classList.add('show');
+        return;
+      }
+
+      errEl.classList.remove('show');
+      btn.textContent = 'Processing registration...';
+      btn.disabled = true;
+
+      // Save to sessionStorage (no expiry needed — session clears on tab close)
+      sessionStorage.setItem('glamourUser', JSON.stringify({ name: name, username: username, email: email }));
+
+      setTimeout(function() {
+        btn.textContent = 'Registration successful ✓';
+        setTimeout(function() {
+          showDashboard(name, username);
+        }, 1000);
+      }, 1500);
+    }
+
+    function showDashboard(name, username) {
+      document.getElementById('pageForm').style.display = 'none';
+      var dash = document.getElementById('pageDashboard');
+      dash.style.display = 'block';
+
+      // Set welcome name
+      document.getElementById('welcomeName').textContent = 'Welcome ' + name;
+      document.getElementById('avatarInitial').textContent = name.charAt(0).toUpperCase();
+
+      // Set referral link
+      document.getElementById('refLink').textContent = 'https://glamourlux.net.ng/?ref=' + username;
+
+      // Start live popups after a short delay
+      setTimeout(startLivePopups, 1500);
+    }
+
+    /* ── SESSION CHECK (return visit) ── */
+    window.addEventListener('load', function() {
+      var saved = sessionStorage.getItem('glamourUser');
+      if (saved) {
+        try {
+          var u = JSON.parse(saved);
+          showDashboard(u.name, u.username);
+        } catch(e) {
+          sessionStorage.removeItem('glamourUser');
+        }
+      }
+    });
+
+    /* ── CARD STACK ── */
+    var currentCard = 0;
+    function nextCard() {
+      currentCard = (currentCard + 1) % 3;
+      var cards = document.querySelectorAll('.dash-card');
+      var tops  = ['0px', '10px', '20px'];
+      var zs    = [3, 2, 1];
+      cards.forEach(function(c, i) {
+        var pos = (i - currentCard + 3) % 3;
+        c.style.top    = tops[pos];
+        c.style.zIndex = zs[pos];
+      });
+    }
+
+    /* ── CURRENCY ── */
+    var rates = { USD: { b1: '$12', b2: '$12', b3: '$5' }, NGN: { b1: '₦12,000', b2: '₦12,000', b3: '₦5,000' }, EUR: { b1: '€7.54', b2: '€7.54', b3: '€5' } };
+
+    function toggleCurrency() {
+      var box = document.getElementById('currencyBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function setCurrency(cur) {
+      var r = rates[cur];
+      document.getElementById('balance1').textContent = r.b1;
+      document.getElementById('balance2').textContent = r.b2;
+      document.getElementById('balance3').textContent = r.b3;
+      document.querySelector('.currency-btn').textContent = cur + ' ▼';
+      document.getElementById('currencyBox').style.display = 'none';
+    }
+
+    /* ── MUSIC ── */
+    var audio       = document.getElementById('audioPlayer');
+    var fill        = document.getElementById('progressFill');
+    var curTimeEl   = document.getElementById('currentTime');
+    var durEl       = document.getElementById('duration');
+    var playBtn     = document.getElementById('playBtn');
+    var isPlaying   = false;
+
+    function togglePlay() {
+      if (isPlaying) {
+        audio.pause();
+        playBtn.textContent = '▶';
+      } else {
+        audio.play();
+        playBtn.textContent = '❚❚';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    audio.addEventListener('timeupdate', function() {
+      if (!audio.duration) return;
+      fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      curTimeEl.textContent = fmtTime(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', function() {
+      durEl.textContent = fmtTime(audio.duration);
+    });
+
+    audio.addEventListener('ended', function() {
+      playBtn.textContent = '▶';
+      isPlaying = false;
+      fill.style.width = '0%';
+      curTimeEl.textContent = '0:00';
+    });
+
+    function fmtTime(t) {
+      var m = Math.floor(t / 60);
+      var s = Math.floor(t % 60);
+      return m + ':' + (s < 10 ? '0' + s : s);
+    }
+
+    /* ── COPY REFERRAL ── */
+    function copyRef() {
+      var txt = document.getElementById('refLink').textContent;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(txt).then(function() {
+          showCopyFeedback();
+        });
+      } else {
+        // Fallback
+        var el = document.createElement('textarea');
+        el.value = txt;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showCopyFeedback();
+      }
+    }
+
+    function showCopyFeedback() {
+      var btn = document.querySelector('.ref-copy');
+      btn.style.background = 'rgba(255,201,25,0.3)';
+      setTimeout(function() {
+        btn.style.background = 'rgba(255,201,25,0.1)';
+      }, 800);
+    }
+
+    /* ── ACTIVATION POPUP ── */
+    function openActivation() {
+      document.getElementById('activationPopup').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeActivation(e) {
+      if (e.target.id === 'activationPopup') {
+        closeActivationBtn();
+      }
+    }
+
+    function closeActivationBtn() {
+      document.getElementById('activationPopup').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ── LIVE POPUPS (dashboard) ── */
+    var popupData = [
+      { name: 'Ngozi E.',       msg: 'Activated Lifetime Access 💎' },
+      { name: 'Idris Nafiu',    msg: 'Just withdrew ₦12,000 bonus' },
+      { name: 'David K.',       msg: 'Just withdrew ₦120,000' },
+      { name: 'Aisha M.',       msg: 'Earned ₦45,000 from Partnerships' },
+      { name: 'Qudus Bashit',   msg: 'Just withdrew ₦12,000 bonus' },
+      { name: 'Kelvin J.',      msg: 'Activated an Account 🎉' },
+      { name: 'Mama G',         msg: 'Just withdrew ₦12,000 bonus' },
+      { name: 'Okechukwu M.',   msg: 'Just got connected' },
+      { name: 'Collins Olaleye',msg: 'Just withdrew ₦12,000 bonus' },
+      { name: 'Ruth A.',        msg: 'Just withdrew ₦300,000' }
+    ];
+
+    var popupIdx = 0;
+
+    function showLivePopup() {
+      var box = document.getElementById('livePopup');
+      var d   = popupData[popupIdx];
+
+      document.getElementById('liveName').textContent  = d.name;
+      document.getElementById('liveMsg').textContent   = d.msg;
+      document.getElementById('liveAvatar').textContent = d.name.charAt(0);
+
+      box.classList.remove('hide');
+      void box.offsetWidth; // force reflow
+      box.classList.add('show');
+
+      setTimeout(function() {
+        box.classList.remove('show');
+        box.classList.add('hide');
+      }, 3200);
+
+      popupIdx = (popupIdx + 1) % popupData.length;
+    }
+
+    function startLivePopups() {
+      showLivePopup();
+      setInterval(showLivePopup, 5000);
+    }
+  </script>
+
+</body>
+</html>

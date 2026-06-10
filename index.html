@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Glamour Earning Platform | Earn Euros in Nigeria</title>
+  <meta name="description" content="Glamour pays Nigerian creators in Euros — €12/hour across 6 GlamGain streams. Activate for ₦14,000 (€7). Glam Link Bonus ₦12,000 per referral. Join 12,000+ creators.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;900&family=Poppins:wght@400;500;600&family=Raleway:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #FFC919;
+      --gold-dark: #D9A600;
+      --gold-bright: #FEC722;
+      --bg: #100C03;
+      --bg2: #170F01;
+      --bg3: #211907;
+      --card: #170F01;
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.56);
+      --radius: 1.125rem;
+      --radius-lg: 1.625rem;
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(45deg, #090803 40%, #170F03 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 72px;
+      background: #090803;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 9999;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      color: var(--gold);
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .header-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover { color: var(--gold); }
+
+    .header-nav .btn-nav {
+      background: var(--gold-dark);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .header-nav .btn-nav:hover { background: var(--gold); }
+
+    /* ── WRAPPER ── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 0; }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 8rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+      animation: fadeSlideDown 0.9s ease both;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      animation: fadeSlideDown 0.9s 0.15s ease both;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      animation: fadeSlideDown 0.9s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold-bright);
+      background-image: linear-gradient(45deg, #0B0A06 0%, rgba(254,199,34,0.05) 100%);
+      color: rgba(255,255,255,0.9);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0 1.75rem;
+      height: 3.25rem;
+      line-height: 3.25rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      width: min(100%, 400px);
+      text-align: center;
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid rgba(255,201,25,0.5);
+      background: rgba(36,30,10,0.2);
+      color: rgba(255,255,255,0.75);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0 1.75rem;
+      height: 3.25rem;
+      line-height: calc(3.25rem - 2px);
+      border-radius: var(--radius);
+      text-decoration: none;
+      width: min(100%, 400px);
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── SECTION HEADING ── */
+    .section-heading {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subheading {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-intro { margin-bottom: 2.5rem; }
+
+    .earnings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .earn-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid rgba(255,201,25,0.1);
+      transition: border-color 0.2s;
+    }
+
+    .earn-item:hover { border-color: rgba(255,201,25,0.35); }
+
+    .earn-item-title {
+      color: var(--gold);
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .earn-item-desc {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .earn-item-desc strong { color: #fff; }
+
+    /* ── GLAM STATUS ── */
+    .glam-status-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .glam-status-text .p + .p { margin-top: 1rem; }
+
+    .glam-status-text em { font-style: italic; }
+
+    /* ── PRICING CARD ── */
+    .pricing-section { text-align: center; }
+
+    .pricing-card {
+      background: linear-gradient(45deg, #171103 0%, #0A0702 100%);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(255,201,25,0.15);
+      max-width: 540px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+
+    .pricing-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-price {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: -0.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+
+    .pricing-list li::before {
+      content: '';
+      display: block;
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    .pricing-list li strong { color: #fff; }
+
+    .btn-register {
+      display: inline-block;
+      background: var(--gold-dark);
+      background-image: linear-gradient(45deg, #0B0A06 0%, rgba(217,166,0,0.05) 100%);
+      color: rgba(255,255,255,0.8);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0 1.5rem;
+      height: 3rem;
+      line-height: 3rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: filter 0.2s;
+    }
+
+    .btn-register:hover { filter: brightness(1.2); }
+
+    /* ── STEPS ── */
+    .steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .step-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      border: 1px solid rgba(255,201,25,0.1);
+    }
+
+    .step-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: -0.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIAL SECTION ── */
+    .pays-section .section-heading { margin-bottom: 1rem; }
+
+    .pays-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .pays-text .p + .p { margin-top: 1rem; }
+
+    /* ── GLAM RECIPE ── */
+    .recipe-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .recipe-text .p + .p { margin-top: 1rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(45deg, #2E2206 0%, #0A0702 60%, #302406 100%);
+      border-radius: 2.125rem;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .cta-banner .section-heading {
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner .section-subheading {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: var(--gold-dark);
+      background-image: linear-gradient(45deg, #0B0A06 0%, rgba(217,166,0,0.05) 100%);
+      color: rgba(255,255,255,0.8);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      height: 3rem;
+      line-height: 3rem;
+      padding: 0 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      width: min(100%, 360px);
+      text-align: center;
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .btn-cta:hover { filter: brightness(1.2); transform: translateY(-1px); }
+
+    .btn-cta-outline {
+      display: inline-block;
+      border: 1px solid var(--gold-dark);
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      height: 3rem;
+      line-height: calc(3rem - 2px);
+      padding: 0 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      width: min(100%, 360px);
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-cta-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      height: 1px;
+      background: rgba(217,166,0,0.25);
+      margin: 2.5rem 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 3rem 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand span { color: var(--gold-dark); }
+
+    .footer-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-copy a { color: #E4BA33; text-decoration: none; }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,201,25,0.1);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    /* ── EARNINGS BADGE ROW ── */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .badge {
+      background: rgba(255,201,25,0.08);
+      border: 1px solid rgba(255,201,25,0.2);
+      border-radius: 999px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ── NOTICE ── */
+    .notice {
+      font-size: 0.5rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-1rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 640px) {
+      .btn-group, .cta-btn-group { flex-direction: row; justify-content: center; }
+      .btn-primary, .btn-secondary, .btn-cta, .btn-cta-outline { width: auto; }
+      .header-nav { gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 15px; }
+      .header-nav a:not(.btn-nav) { display: none; }
+      section { padding: 3.5rem 0; }
+      .pricing-card { padding: 1.75rem 1.25rem; }
+    }
+
+    /* ── POPUP NOTIFICATION ── */
+    .popup-wrap {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    .popup-card {
+      background: #211907;
+      width: 94%;
+      max-width: 420px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,201,25,0.18);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+      pointer-events: auto;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .popup-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .popup-pill {
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      background: #E63946;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .popup-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #333;
+    }
+
+    .popup-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .popup-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .popup-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .popup-msg {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .popup-join {
+      background: var(--gold-dark);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-family: 'Raleway', sans-serif;
+    }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 180%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 200%;
+    border-radius: 30px;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+   
+  .gft-section {
+    border-radius: 20px;
+    
+    
+  }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">
+      <img src="https://i.postimg.cc/XvZp3jbT/20260408-184859.png" class="logo-img" alt="Glamour logo">
+      <span class="logo-text">Glamour</span>
+    </div>
+    
+    <nav class="header-nav"
+      
+      <a href="#steps"</a>
+      <a href="./register.html" class="btn-nav">Register</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="wrapper">
+        <h1 class="hero-title">Turn Your Lifestyle into Earnings —&nbsp;Monetize Your Social Life</h1>
+        <p class="hero-subtitle">Glamour is a European institution that partners with Africans to showcase your lifestyle, creativity, and daily habits — and get paid for it. Your outfits, routines, cuisine, and culture become your income.</p>
+        <div class="btn-group">
+          <a href="./register.html" class="btn-primary">Create an Account</a>
+          <a href="#how-it-works" class="btn-secondary">Post Status &amp; Earn</a>
+        </div>
+
+        <div class="badge-row">
+          <span class="badge">12,000+ Creators</span>
+          <span class="badge">€12/hour Total</span>
+          <span class="badge">₦14,000 Activation</span>
+          <span class="badge">₦12,000 Referral Bonus</span>
+          <span class="badge">No Follower Minimum</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     GLAM FACETIME SECTION — paste into your index.html
+     ============================================================ -->
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Glam FaceTime Section ── */
+  .gft-section {
+    position: relative;
+    background: radial-gradient(ellipse 80% 60% at 50% 20%, #0d3b3b 0%, #0a0a0a 60%);
+    color: #fff;
+    text-align: center;
+    padding: 80px 24px 100px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ambient glow blobs */
+  .gft-section::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 260px;
+    background: radial-gradient(ellipse, rgba(0,210,180,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .gft-hashtag {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+
+  .gft-headline {
+    margin: 0 0 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.4rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .gft-headline span.gft-white { color: #ffffff; }
+  .gft-headline span.gft-teal  { color: #00d4c8; }
+
+  .gft-subheadline {
+    margin: 0 0 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.2rem, 3.5vw, 1.75rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .gft-body {
+    max-width: 540px;
+    margin: 0 auto 36px;
+    font-size: clamp(0.88rem, 2vw, 1rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+  }
+
+  /* CTA Button */
+  .gft-cta {
+    display: inline-block;
+    padding: 16px 44px;
+    border: 2px solid #00d4c8;
+    border-radius: 50px;
+    color: #00d4c8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gft-cta:hover,
+  .gft-cta:focus {
+    background: #00d4c8;
+    color: #0a0a0a;
+    box-shadow: 0 0 28px rgba(0,212,200,0.45);
+    outline: none;
+  }
+
+  /* Hero image + floating badges */
+  .gft-visual {
+    position: relative;
+    display: inline-block;
+    margin-top: 48px;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .gft-visual img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+  }
+
+  /* Floating earning badge */
+  .gft-badge-earn {
+    position: absolute;
+    top: 18%;
+    right: -10px;
+    background: linear-gradient(135deg, #c8a84b, #f0d060);
+    color: #1a1200;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(200,168,75,0.45);
+    white-space: nowrap;
+    animation: gft-bob 2.8s ease-in-out infinite;
+  }
+
+  /* Floating call badge */
+  .gft-badge-call {
+    position: absolute;
+    top: calc(18% + 54px);
+    right: -10px;
+    background: rgba(0, 180, 170, 0.92);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 7px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,200,190,0.3);
+    animation: gft-bob 2.8s ease-in-out infinite 0.4s;
+  }
+
+  @keyframes gft-bob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+
+  /* Golden glow blobs behind the image */
+  .gft-glow-left,
+  .gft-glow-right {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .gft-glow-left {
+    width: 200px;
+    height: 200px;
+    background: rgba(200,168,75,0.25);
+    left: -60px;
+    bottom: 10%;
+  }
+
+  .gft-glow-right {
+    width: 160px;
+    height: 160px;
+    background: rgba(200,168,75,0.18);
+    right: -40px;
+    top: 30%;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .gft-hashtag { font-size: 0.68rem; right: 14px; top: 16px; }
+    .gft-badge-earn,
+    .gft-badge-call { right: 4px; font-size: 0.82rem; padding: 6px 11px; }
+    .gft-section { padding: 60px 16px 70px; }
+  }
+</style>
+
+    
+    
+<!-- ── Section Markup ── -->
+<section class="gft-section" aria-label="Glam FaceTime">
+
+  <span class="gft-hashtag">#GlamLifestyle</span>
+
+  <h2 class="gft-headline">
+    <span class="gft-white">GLAM </span><span class="gft-teal">FACETIME</span>
+  </h2>
+
+  <p class="gft-subheadline">Talk. Connect. Earn in Euros.</p>
+
+  <p class="gft-body">
+    What if a simple conversation could pay you? With Glam FaceTime,
+    you connect with Europeans — chat, guide, share experiences.
+    Your time becomes valuable. Your presence becomes income.
+  </p>
+
+  <a href="register.html" class="gft-cta">Join the Movement</a>
+
+  <div class="gft-visual">
+    <!-- Replace src with your actual hero image path -->
+    
+    <div class="gft-glow-left"></div>
+    <div class="gft-glow-right"></div>
+    <div class="gft-badge-earn">+ €3.00 ▲</div>
+    <div class="gft-badge-call">Call 02:30</div>
+  </div>
+</section>
+    
+    <section> 
+       <div class="video-container">
+    <video controls video width="400">
+        <source src="video02.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</section>
+    
+    
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works">
+      <div class="wrapper">
+        <div class="how-intro">
+          <h2 class="section-heading">How Earnings Work on Glamour</h2>
+        </div>
+
+        <div class="earnings-list">
+          <div class="earn-item">
+            <div class="earn-item-title">ACCESS FEE</div>
+            <p class="earn-item-desc">₦14,000 onboarding fee which is used to create a personalized profile for you and unlock all earning streams immediately.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Glam Real-time</div>
+            <p class="earn-item-desc">Earn <strong>₦3,000 every 15 minutes</strong> of active engagement — that's up to ₦12,000 per hour, with no withdrawal delays.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Video Script Writing (GlamScript2Cash)</div>
+            <p class="earn-item-desc">Established content creators will hire you to write scripts for their videos. Earn <strong>€2 per approved script</strong>, perfect for writers and copywriters.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Glam Lingua</div>
+            <p class="earn-item-desc">That foreign language you speak has more value than you know! Europeans want to learn local languages — earn <strong>₦2,000 per hour</strong> for teaching any language.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Glam 9-5 Works</div>
+            <p class="earn-item-desc">Upload your CV here! Companies trust Glamour to connect them with competent certificate holders. Upload your resume and get hired within 1 week.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Glam Lifestyle</div>
+            <p class="earn-item-desc">Share videos about your daily activities, choices and decisions, in exchange for <strong>₦3,000 per hour</strong>. Your life is content.</p>
+          </div>
+          <div class="earn-item">
+            <div class="earn-item-title">Exclusive Bonus</div>
+            <p class="earn-item-desc">Enjoy a <strong>€5 free daily incentive</strong> from our European partners just for staying active on the platform.</p>
+          </div>
+             
+ 
+        
+    
+         
+
+            
+        </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+
+
+    <!-- GLAM STATUS -->
+  
+  
+    <section>
+      <div class="wrapper">
+        <h2 class="section-heading">Tried Earning from WhatsApp?</h2>
+        <br>
+        <div class="glam-status-text">
+          <p class="p">Just like you post on your WhatsApp status about how you feel, where you are, the funny memes you saw, and the banter tweets you found — you can do the same on Glamour with the Glam Status, and earn for it.</p>
+          <p class="p">In the same way you save contacts that view your status, once you sign up and start connecting with your European counterparts on Glamour, they can view your GlamStatus and you get paid for every view.</p>
+          <p class="p"><em>The more eyes on your content, the bigger your rewards. Shine on your Glam Status, go viral, and turn your posts into cash.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECIPE / CULTURE -->
+    <section>
+      <div class="wrapper">
+        <h2 class="section-heading">Share Your Recipe With Us 😍</h2>
+        <br>
+        <div class="recipe-text">
+          <p class="p">As a user on Glamour, your food is global content. You can showcase your indigenous foods and teach the recipes of local dishes to your European counterparts — and earn from it.</p>
+          <p class="p">Your favourite dishes, your local foods and gourmet meals can now earn you extra money.</p>
+          <p class="p">On Glamour, you showcase your people, your tribe, your culture to the world — and you get paid.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIQUE EXPERIENCE / PRICING -->
+    <section id="pricing">
+      <div class="wrapper pricing-section">
+        <h2 class="section-heading">Glamour Unique User Experience</h2>
+        <p class="section-subheading">Structural representation of how each activity on Glamour operates</p>
+
+        <div class="pricing-card">
+          <div class="pricing-label">Glamour — Full Access Plan</div>
+          <div class="pricing-price">₦14,000</div>
+          <ul class="pricing-list">
+            <li><span><strong>Instant reward:</strong> ₦12,000 sent directly to your bank immediately after activation.</span></li>
+            <li><span><strong>High activity earnings:</strong> Enjoy ₦3,000 every 15 minutes of approved engagement — earning potential up to ₦12,000/hour.</span></li>
+            <li><span><strong>Monetized Script Writing:</strong> Earn ₦3,000 per hour for writing scripts.</span></li>
+            <li><span><strong>Upload Lifestyle Videos:</strong> Record daily activities like cooking, cleaning, etc. Upload them on Glamour and earn ₦3,000 per hour.</span></li>
+            <li><span><strong>Premium extras:</strong> €6 credit bonus (withdrawable) + exclusive access to premium entertainment offers.</span></li>
+          </ul>
+          <a href="./register.html" class="btn-register">Register Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOES GLAMOUR PAY? -->
+    <section class="pays-section">
+      <div class="wrapper">
+        <h2 class="section-heading">Does <span style="color:#FEC722">Glamour</span> Really Pay? <span style="color:#FEC722">Yes!</span></h2>
+        <br>
+        <div class="pays-text">
+          <p class="p">Whether you're skilled or not, experienced or not, a professional or not, learned or not, Glamour does not need much from you.</p>
+          <p class="p">The system is set up to ensure everyone can experience a glam &amp; soft earning. From showcasing your lifestyle to performing simple activities, Glamour rewards you earnestly without conditions.</p>
+        </div>
+    </section>
+
+
+    <section> 
+    <div class="video-container">
+    <video controls video width="400">
+        <source src="video01.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</section> 
+
+    <!-- GET STARTED STEPS -->
+    <section id="steps">
+      <div class="wrapper">
+        <h2 class="section-heading">Get Started in 3 Simple Steps</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Sign Up</div>
+            <p class="step-desc">Enter your name, email and choose a plan. We'll credit your instant welcome bonus to you.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">Confirm Onboarding Fee</div>
+            <p class="step-desc">Activate your created account with a one-time fee of ₦14,000 as indicated in your account.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">Start Earning</div>
+            <p class="step-desc">Once your account has been activated, your bonus gets unlocked and you can start redeeming your earnings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="wrapper">
+        <h2 class="section-heading">Got Questions?</h2>
+        <p class="section-subheading">Common questions about the Glamour platform</p>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">Is Glamour legit?</button>
+            <div class="faq-answer"><p>Yes, Glamour is a legit earning platform used by many users daily. It is backed by a European institution with transparent earning structures and direct bank withdrawals.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">Can I withdraw my earnings?</button>
+            <div class="faq-answer"><p>Yes, withdrawals are processed successfully based on your earnings. Glamour pays directly to Nigerian bank accounts including Access Bank, GTBank, OPay, PalmPay, Kuda, and Moniepoint. Withdrawals process within 24–48 hours.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">How much can I make daily?</button>
+            <div class="faq-answer"><p>As a registered user, you earn at least ₦15,000 every 24 hours through active engagement. Creators active 4 hours a day, 5 days a week can earn approximately €960/month in base GlamGains plus unlimited referral income.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">Do I need referrals to earn?</button>
+            <div class="faq-answer"><p>No, referrals are optional. You can earn without inviting anyone. Referrals are a bonus — you earn ₦12,000 for each activated referral, but all task streams are fully available without referring anyone.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">What is the minimum withdrawal?</button>
+            <div class="faq-answer"><p>There is no minimum withdrawal threshold. Glamour uses a threshold-free withdrawal system that allows you to withdraw any amount earned at any time.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">Do I need a large social media following?</button>
+            <div class="faq-answer"><p>No. Glamour does not require any minimum follower count. Any Nigerian content creator — beginner or established — in fashion, tech, vlog, beauty, or lifestyle niches can join and immediately start earning after the ₦14,000 activation.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.closest('.faq-item').classList.toggle('open')">Are there hidden fees?</button>
+            <div class="faq-answer"><p>No hidden charges. The only payment is the ₦14,000 one-time activation fee. Everything after that is earnings — no monthly fees, no surprise deductions.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section>
+      <div class="wrapper">
+        <div class="cta-banner">
+          <h2 class="section-heading"><span style="color:#E4BA33">Everyone</span> can earn real money with <span style="color:#E4BA33">Glamour</span></h2>
+          <p class="section-subheading">Join 12,000+ Nigerian creators earning Euros on Glamour. Takes 2 minutes to register. First payment possible within 24 hours of activation.</p>
+          <div class="cta-btn-group">
+            <a href="./register.html" class="btn-cta">Start Your Journey</a>
+            <a href="./register.html" class="btn-cta-outline">Create an Account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <hr class="divider">
+      <div class="footer-brand"><span>G</span>lamour</div>
+      <p class="footer-desc">Glamour is an innovative ecosystem connecting people, creating opportunities, and rewarding engagement through media, gigs, and skills.</p>
+      <div class="footer-links">
+        <a href="./register.html">Register</a>
+        <a href="#how-it-works">Earning Layout</a>
+        <a href="#steps">Get Started</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <p class="footer-copy">Built by <a href="./register.html">WCTECH INNOVATIONS</a></p>
+    </div>
+  </footer>
+
+  <!-- POPUP NOTIFICATIONS -->
+  <div class="popup-wrap">
+    <div id="glamPopup" class="popup-card">
+      <div class="popup-pill">Active</div>
+      <div class="popup-avatar">
+        <img id="glamPopupImg" src="" alt="">
+      </div>
+      <div class="popup-body">
+        <div id="glamPopupName" class="popup-name"></div>
+        <div id="glamPopupMsg" class="popup-msg"></div>
+      </div>
+      <div class="popup-join">Join</div>
+    </div>
+  </div>
+
+  <script>
+    var popups = [
+      { img: "https://i.postimg.cc/1tG2tHQ5/IMG-2370.jpg",  name: "Bolu Adeniyi",    msg: "Just earned \u20a63,000 for teaching Yoruba" },
+      { img: "https://i.postimg.cc/4x0rFyPf/IMG-2376.jpg",  name: "Esther Katherine", msg: "Just made a withdrawal of \u20a6127,500" },
+      { img: "https://i.postimg.cc/d0mjZShF/IMG-2374.jpg",  name: "Aisha Bello",      msg: "Just made a withdrawal of \u20a678,000" },
+      { img: "https://i.postimg.cc/5NSz3Fxr/IMG-2563.jpg",  name: "Chinedu Obi",      msg: "Earned \u20a620,000 from Sharon Lifestyle videos" },
+      { img: "https://i.postimg.cc/mrzh0csW/IMG-2372.jpg",  name: "Sola Martins",     msg: "Just made a withdrawal of \u20a6215,000" },
+      { img: "https://i.postimg.cc/NFpgyYcr/IMG-2371.jpg",  name: "Kelvin Johnson",   msg: "Earned \u20a667,400 for 3 European partnerships" },
+      { img: "https://i.postimg.cc/XNDmvpMZ/IMG-2375.jpg",  name: "Ruth Williams",    msg: "Just made a withdrawal of \u20a6300,000" },
+      { img: "https://i.postimg.cc/9QxJLkWZ/IMG-2577.jpg",  name: "Yemi Ade",         msg: "Just made a withdrawal of \u20a697,600" },
+      { img: "https://i.postimg.cc/bvCW2JDX/IMG-2373.jpg",  name: "Daniel Okoye",     msg: "Just made a withdrawal of \u20a6290,000" },
+      { img: "",                                             name: "Fatima Lawal",     msg: "Earned \u20a627,000 uploading 3 contents on Whatsapp Status" }
+    ];
+
+    var idx = 0;
+    var popup  = document.getElementById('glamPopup');
+    var imgEl  = document.getElementById('glamPopupImg');
+    var nameEl = document.getElementById('glamPopupName');
+    var msgEl  = document.getElementById('glamPopupMsg');
+
+    function showPopup() {
+      var d = popups[idx];
+      imgEl.src = d.img || 'https://via.placeholder.com/46/211907/FFC919?text=G';
+      nameEl.textContent = d.name;
+      msgEl.textContent  = d.msg;
+      popup.classList.add('show');
+      setTimeout(function() { popup.classList.remove('show'); }, 3500);
+      idx = (idx + 1) % popups.length;
+    }
+
+    setTimeout(function() {
+      showPopup();
+      setInterval(showPopup, 5000);
+    }, 4000);
+  </script>
+
+</body>
+</html>

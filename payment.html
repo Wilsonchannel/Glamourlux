@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Glamour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <style>
+    :root {
+      --gold: #E8C84A;
+      --gold-bright: #FFD700;
+      --gold-soft: #f0d060;
+      --brown-dark: #1a0f00;
+      --brown-mid: #2e1c02;
+      --brown-card: #3a2204;
+      --brown-light: #5a3a08;
+      --amber: #c8940a;
+      --cyan-accent: #00f2ff;
+      --white: #ffffff;
+      --white-70: rgba(255,255,255,0.7);
+      --white-40: rgba(255,255,255,0.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--brown-dark);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(232,200,74,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200,148,10,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(90,58,8,0.3) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    @keyframes bgPulse {
+      0%   { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* ── HEADER ── */
+    .glamour-header {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(232,200,74,0.3);
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .brand i { margin-right: 8px; font-size: 1.2rem; }
+
+    .header-badge {
+      background: var(--brown-dark);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── LAYOUT ── */
+    .payment-section {
+      padding: 60px 16px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .payment-card {
+      background: linear-gradient(160deg, #3d2506 0%, #2a1803 60%, #1e1002 100%);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(232,200,74,0.35);
+      box-shadow:
+        0 0 0 1px rgba(232,200,74,0.1),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 80px rgba(232,200,74,0.08) inset;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 520px;
+      animation: cardReveal 0.7s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(30px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Shiny top edge */
+    .payment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.8), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.4; left: 10%; right: 10%; }
+      50%       { opacity: 1;   left: 0%;  right: 0%; }
+    }
+
+    /* Corner glow */
+    .payment-card::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,200,74,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .card-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold), #c8940a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.25rem;
+      animation: fadeUp 0.5s 0.2s both;
+    }
+
+    .card-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--white-70);
+      letter-spacing: 0.3px;
+      animation: fadeUp 0.5s 0.3s both;
+    }
+
+    .card-intro {
+      text-align: center;
+      color: var(--white-40);
+      font-size: 0.85rem;
+      margin: 0.5rem 0 1.8rem;
+      animation: fadeUp 0.5s 0.4s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ALERT ── */
+    .alert-note {
+      background: linear-gradient(135deg, rgba(255,193,7,0.12), rgba(200,148,10,0.08));
+      border: 1px solid rgba(255,193,7,0.5);
+      color: #ffd060;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      text-align: center;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.5s 0.5s both;
+    }
+
+    .alert-note::before { content: '⚠  '; }
+
+    /* ── AMOUNT ── */
+    .payment-details {
+      border-top: 1px solid rgba(232,200,74,0.15);
+      border-bottom: 1px solid rgba(232,200,74,0.15);
+      padding: 1.4rem 0;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.5s 0.55s both;
+    }
+
+    .amount-label {
+      text-align: center;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--white-40);
+      margin-bottom: 0.5rem;
+    }
+
+    .amount-display {
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFD700, #FF8C00, #E8C84A, #fff176);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: amountPulse 2.5s ease-in-out infinite alternate;
+      letter-spacing: 1px;
+    }
+
+    @keyframes amountPulse {
+      0%   { filter: drop-shadow(0 0 10px rgba(255,180,0,0.4)); }
+      100% { filter: drop-shadow(0 0 28px rgba(255,180,0,0.9)); }
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+      opacity: 0.4;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,200,74,0.5), transparent);
+    }
+
+    .section-divider span {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ── BANK INFO ── */
+    .transfer-instruction {
+      font-weight: 500;
+      text-align: center;
+      color: var(--white-70);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      animation: fadeUp 0.5s 0.6s both;
+    }
+
+    .account-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(232,200,74,0.12);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s, background 0.2s;
+      animation: fadeUp 0.5s 0.65s both;
+    }
+
+    .account-line:hover {
+      border-color: rgba(232,200,74,0.35);
+      background: linear-gradient(135deg, rgba(232,200,74,0.07), rgba(232,200,74,0.03));
+    }
+
+    .account-label {
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--white-70);
+    }
+
+    .account-value {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── TIMER ── */
+    .timer-wrapper {
+      text-align: center;
+      margin: 1.8rem 0 1.2rem;
+      animation: fadeUp 0.5s 0.7s both;
+    }
+
+    .timer-label {
+      font-size: 0.82rem;
+      color: var(--white-40);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .timer-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(0,242,255,0.08), rgba(0,242,255,0.03));
+      border: 1px solid rgba(0,242,255,0.25);
+      padding: 0.6rem 1.4rem;
+      border-radius: 12px;
+    }
+
+    .hurry {
+      color: var(--cyan-accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* CSS-only countdown using animation-delay trick */
+    .countdown {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      animation: pulseTimer 1s ease-in-out infinite;
+    }
+
+   
+    }
+
+    @keyframes pulseTimer {
+      0%, 100% { text-shadow: 0 0 8px rgba(255,215,0,0.4); }
+      50%       { text-shadow: 0 0 20px rgba(255,215,0,0.9); }
+    }
+
+    /* ── FINAL INSTRUCTION ── */
+    .final-instruction {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--white-40);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.5s 0.75s both;
+    }
+
+    .final-instruction b { color: var(--gold); }
+
+    /* ── CTA BUTTON ── */
+    .btn-payment-confirm {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--amber) 100%);
+      color: var(--brown-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(232,200,74,0.35);
+      animation: fadeUp 0.5s 0.8s both;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+
+    .btn-payment-confirm::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-payment-confirm:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(232,200,74,0.5);
+      color: var(--brown-dark);
+    }
+
+    .btn-payment-confirm:hover::before { left: 100%; }
+
+    .btn-payment-confirm i { margin-right: 8px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(232,200,74,0.1);
+      padding: 1.5rem 0;
+      text-align: center;
+      color: var(--white-40);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── POWERED BY ── */
+    .powered-by-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      color: #000;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 11px;
+      box-shadow: 0 4px 15px rgba(232,200,74,0.4);
+      text-align: center;
+      text-decoration: none;
+      z-index: 9999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      line-height: 1.3;
+    }
+
+    .powered-by-btn:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 8px 20px rgba(232,200,74,0.5);
+      color: #000;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .payment-section { padding: 20px 12px 40px; }
+      .payment-card { padding: 1.5rem; }
+      .card-title { font-size: 1.4rem; }
+      .account-value { font-size: 0.88rem; }
+      .amount-display { font-size: 2.2rem; }
+      .countdown { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="glamour-header">
+    <div class="brand">
+      <i class="fas fa-bars"></i> Glamour
+    </div>
+    <div class="header-badge">Payment Gateway</div>
+  </div>
+
+  <!-- Main -->
+  <main>
+    <section class="payment-section">
+      <div class="payment-card">
+
+        <h2 class="card-title">GLAMOUR ACTIVATION</h2>
+        <h3 class="card-subtitle">Complete Your Payment</h3>
+        <p class="card-intro">One-time payment to begin earning on GlamourLux</p>
+
+        <div class="alert-note">
+          <strong>DO NOT PAY WITH OPAY</strong> — OPay is not accepted. Use any other bank.
+        </div>
+
+        <div class="payment-details">
+          <p class="amount-label">Amount to Pay</p>
+          <div class="amount-display">₦14,000</div>
+        </div>
+
+        <div class="section-divider"><span>Transfer Details</span></div>
+
+        <div class="bank-info">
+          <p class="transfer-instruction">Transfer to the account below</p>
+
+          <div class="account-line">
+            <span class="account-label">Account Number</span>
+            <span class="account-value">6606092804</span>
+          </div>
+
+          <div class="account-line">
+            <span class="account-label">Bank</span>
+            <span class="account-value">MONIEPOINT</span>
+          </div>
+
+          <div class="account-line">
+            <span class="account-label">Account Name</span>
+            <span class="account-value">MYINSTAGAIN-GLAMOUR INC</span>
+          </div>
+        </div>
+
+
+<div class="timer-wrapper">
+  <div class="timer-label">Session Expires In</div>
+  <div class="timer-box">
+    <span class="hurry">Hurry!!</span>
+    <span class="countdown"></span>
+  </div>
+</div>
+
+<script>
+  let timeLeft = 10 * 60; // 10 minutes in seconds
+
+  const countdown = document.querySelector(".countdown");
+
+  function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    countdown.textContent =
+      `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      countdown.textContent = "00:00";
+      return;
+    }
+
+    timeLeft--;
+  }
+
+  updateTimer();
+  const timer = setInterval(updateTimer, 1000);
+</script>
+
+        <p class="final-instruction">
+          After making payment, click <b>"I HAVE MADE PAYMENT"</b> below.<br>
+          Do NOT click if you haven't paid yet — else your registration will not be approved.
+        </p>
+
+        <a href= "https://wa.link/3dpj9u" class="btn-payment-confirm">
+          <i class="fas fa-check-circle"></i>I Have Made Payment
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2026 Glamour. All rights reserved.</small>
+  </footer>
+
+</body>
+</html>
